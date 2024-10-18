@@ -1,0 +1,10 @@
+/node_modules/
+/dist/
+*.log
+*.js
+temp/
+playwright.config.js
+tsconfig.json
+test-results
+package-lock.json
+package.json
