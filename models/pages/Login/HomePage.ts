@@ -1,6 +1,7 @@
 import {Page} from "@playwright/test";
 import {HeaderComponent} from "../../components/global/HeaderComponent";
 import PageBodyComponent from "../../components/PageBodyComponent";
+import {FooterComponent} from "../../components/global/footer/FooterComponent";
 
 export default class HomePage {
 
@@ -14,5 +15,9 @@ export default class HomePage {
 
     pageBodyComp(): PageBodyComponent {
         return new PageBodyComponent(this.page.locator(PageBodyComponent.selector));
+    }
+
+    footerComp(): FooterComponent {
+        return new FooterComponent(this.page.locator(FooterComponent.selector));
     }
 }
