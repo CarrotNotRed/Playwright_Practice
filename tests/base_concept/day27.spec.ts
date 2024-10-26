@@ -1,7 +1,7 @@
 import test from "@playwright/test";
-import {LoginPage01} from "../models/pages/Login/LoginPageMethod01";
-import {LoginPage02} from "../models/pages/Login/LoginPageMethod02";
-import HomePage from "../models/pages/Login/HomePage";
+import {LoginPage01} from "../../models/pages/Login/LoginPageMethod01";
+import {LoginPage02} from "../../models/pages/Login/LoginPageMethod02";
+import HomePage from "../../models/pages/Login/HomePage";
 
 test('Test for login page method 1', async ({page}) => {
     await page.goto('/login');

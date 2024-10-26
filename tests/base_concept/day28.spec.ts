@@ -1,5 +1,5 @@
 import test from "@playwright/test";
-import HomePage from "../models/pages/Login/HomePage";
+import HomePage from "../../models/pages/Login/HomePage";
 
 test('Handle list of component', async ({page}) => {
     await page.goto('https://demowebshop.tricentis.com/');

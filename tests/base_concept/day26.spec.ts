@@ -1,5 +1,5 @@
 import test from "@playwright/test";
-import {getAdSlot, scrollPage} from "../utils/PageHelpers";
+import {getAdSlot, scrollPage} from "../../utils/PageHelpers";
 
 test('Handle JS Alert', async ({page}) => {
     await page.goto("/javascript_alerts");
