@@ -1,13 +1,18 @@
+import {BaseItemDetailsComponent} from "../BaseItemDetailsComponent";
 import {Locator} from "@playwright/test";
-import {selector} from "../SelectorDecorator";
 
-@selector('.product-essential')
-export abstract class ComputersEssentialComponent {
-    protected component: Locator;
+export abstract class ComputersEssentialComponent extends BaseItemDetailsComponent {
 
     protected constructor(component: Locator) {
-        this.component = component;
+        super(component);
     }
 
-    public abstract selectRAM(type: String);
+    public abstract selectRAM(type: String): any;
+
+    public abstract selectHDD(type: String): any;
+
+    protected async selectComputerOptions(type: string) {
+        const computerOptionSel = `//label[contains(text(), "${type}")]`;
+        await this.component.locator(computerOptionSel).click();
+    }
 }

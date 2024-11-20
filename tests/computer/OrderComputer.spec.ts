@@ -1,27 +1,17 @@
 import test from "@playwright/test";
 import {OrderComputerFlow} from "../../test_flow/computer/OrderComputerFlow";
-import {ComputerComponentConstructor} from "../../models/pages/ComputerDetailsPage";
-import {ComputersEssentialComponent} from "../../models/components/computers/ComputerEssentialComponent";
-import {CheapComputerComponent} from "../../models/components/computers/CheapComputerComponent";
+import {cheapComputerData} from "../../test_data/computer/CheapComputerData";
 
-export interface ComputerDataType {
-    ram: String,
-    os?: String,
-    computerCompClass: ComputerComponentConstructor<ComputersEssentialComponent>
-}
-
-test(`Test Buying Computer | First Design`, async ({page}) => {
-    //TODO: Go to target page base on URL
-    const testData: ComputerDataType = {
-        ram: '2GB',
-        computerCompClass: CheapComputerComponent
-    }
-
-    //Init test flow
-    const testFlow: OrderComputerFlow = new OrderComputerFlow(page, testData.computerCompClass, testData);
-    await testFlow.buildComputerSpecAndAddToCart();
-
+cheapComputerData.forEach(computerData => {
+    test(`Test Buying Computer | First Design ${computerData.ram}`, async ({page}) => {
+        await page.goto("/build-your-cheap-own-computer");
+        const orderComputerFlow: OrderComputerFlow = new OrderComputerFlow(page, computerData);
+        await orderComputerFlow.login();
+        await orderComputerFlow.buildComputerSpecAndAddToCart();
+        await page.waitForTimeout(3 * 1000);
+    })
 })
+
 
 
 
