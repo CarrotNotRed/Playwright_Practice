@@ -7,24 +7,25 @@ export abstract class ComputersEssentialComponent extends BaseItemDetailsCompone
         super(component);
     }
 
-    public abstract selectRAM(type: String): any;
+    public abstract selectRAM(type: String): Promise<string>;
 
-    public abstract selectProcessor(type: String): any;
+    public abstract selectProcessor(type: String): Promise<string>;
 
-    async selectHDD(type: string) {
+    async selectHDD(type: string): Promise<string> {
         return await this.selectComputerOptions(type);
     }
 
-    async selectOS(type: string) {
+    async selectOS(type: string): Promise<string> {
         return await this.selectComputerOptions(type);
     }
 
-    async selectSoftware(type: string) {
+    async selectSoftware(type: string): Promise<string> {
         return await this.selectComputerOptions(type);
     }
 
-    protected async selectComputerOptions(type: string) {
+    protected async selectComputerOptions(type: string): Promise<string> {
         const computerOptionSel = `//label[contains(text(), "${type}")]`;
-        await this.component.locator(computerOptionSel).first().click();
+        const optionLoc = this.component.locator(computerOptionSel).first();
+        return await optionLoc.innerText();
     }
 }

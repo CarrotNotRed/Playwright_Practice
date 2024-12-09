@@ -7,11 +7,11 @@ export class CheapComputerComponent extends ComputersEssentialComponent {
         super(component);
     }
 
-    async selectRAM(type: string) {
-        await this.selectComputerOptions(type);
+    async selectRAM(type: string): Promise<string> {
+        return await this.selectComputerOptions(type);
     }
 
-    async selectProcessor(type: string) {
-        await this.selectComputerOptions(type);
+    async selectProcessor(type: string): Promise<string> {
+        return await this.selectComputerOptions(type);
     }
 }

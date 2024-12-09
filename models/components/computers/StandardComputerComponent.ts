@@ -9,20 +9,20 @@ export class StandardComputerComponent extends ComputersEssentialComponent {
         super(component);
     }
 
-    async selectRAM(type: string) {
+    async selectRAM(type: string): Promise<string> {
         const RAM_DROPDOWN_INDEX = 1;
         const allDropdownLoc: Locator[] = await this.component.locator(this.dropdownSel).all();
-        await this.selectOptionDropdown(allDropdownLoc[RAM_DROPDOWN_INDEX], type);
+        return await this.selectOptionDropdown(allDropdownLoc[RAM_DROPDOWN_INDEX], type);
     }
 
-    async selectProcessor(type: string) {
+    async selectProcessor(type: string): Promise<string> {
         const PROCESSOR_DROPDOWN_INDEX = 0;
         const allDropdownLoc: Locator[] = await this.component.locator(this.dropdownSel).all();
-        await this.selectOptionDropdown(allDropdownLoc[PROCESSOR_DROPDOWN_INDEX], type);
+        return await this.selectOptionDropdown(allDropdownLoc[PROCESSOR_DROPDOWN_INDEX], type);
     }
 
-    private async selectOptionDropdown(dropdown: Locator, type: string) {
-        const allOptions: Locator[] = await this.component.locator('option').all();
+    private async selectOptionDropdown(dropdown: Locator, type: string): Promise<string> {
+        const allOptions: Locator[] = await dropdown.locator('option').all();
         let optionIndex = -1;
         let optionText = '';
         for (const option of allOptions) {
@@ -36,5 +36,6 @@ export class StandardComputerComponent extends ComputersEssentialComponent {
             throw new Error(`Option ${type} not found`);
         }
         await dropdown.selectOption({index: optionIndex});
+        return optionText;
     }
 }
