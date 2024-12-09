@@ -9,10 +9,22 @@ export abstract class ComputersEssentialComponent extends BaseItemDetailsCompone
 
     public abstract selectRAM(type: String): any;
 
-    public abstract selectHDD(type: String): any;
+    public abstract selectProcessor(type: String): any;
+
+    async selectHDD(type: string) {
+        return await this.selectComputerOptions(type);
+    }
+
+    async selectOS(type: string) {
+        return await this.selectComputerOptions(type);
+    }
+
+    async selectSoftware(type: string) {
+        return await this.selectComputerOptions(type);
+    }
 
     protected async selectComputerOptions(type: string) {
         const computerOptionSel = `//label[contains(text(), "${type}")]`;
-        await this.component.locator(computerOptionSel).click();
+        await this.component.locator(computerOptionSel).first().click();
     }
 }

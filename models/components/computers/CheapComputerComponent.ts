@@ -11,7 +11,7 @@ export class CheapComputerComponent extends ComputersEssentialComponent {
         await this.selectComputerOptions(type);
     }
 
-    async selectHDD(type: string) {
+    async selectProcessor(type: string) {
         await this.selectComputerOptions(type);
     }
 }
