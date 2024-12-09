@@ -22,7 +22,7 @@ export class StandardComputerComponent extends ComputersEssentialComponent {
     }
 
     private async selectOptionDropdown(dropdown: Locator, type: string) {
-        const allOptions: Locator[] = await this.component.locator('option').all();
+        const allOptions: Locator[] = await dropdown.locator('option').all();
         let optionIndex = -1;
         let optionText = '';
         for (const option of allOptions) {

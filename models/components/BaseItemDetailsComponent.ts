@@ -1,7 +1,7 @@
 import {Locator} from "@playwright/test";
 import {selector} from "./SelectorDecorator";
 
-@selector('//div[@class="product-essential"]')
+@selector('.product-essential')
 export class BaseItemDetailsComponent {
 
     protected component: Locator;
