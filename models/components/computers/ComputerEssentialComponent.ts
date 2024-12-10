@@ -26,6 +26,7 @@ export abstract class ComputersEssentialComponent extends BaseItemDetailsCompone
     protected async selectComputerOptions(type: string): Promise<string> {
         const computerOptionSel = `//label[contains(text(), "${type}")]`;
         const optionLoc = this.component.locator(computerOptionSel).first();
+        await optionLoc.click();
         return await optionLoc.innerText();
     }
 }

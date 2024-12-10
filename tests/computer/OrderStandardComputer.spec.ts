@@ -8,7 +8,7 @@ standardComputerData.forEach(computerData => {
         const orderComputerFlow: OrderComputerFlow = new OrderComputerFlow(page, computerData);
         await orderComputerFlow.login();
         await orderComputerFlow.buildComputerSpecAndAddToCart();
-        await page.waitForTimeout(3 * 1000);
+        await page.waitForTimeout(5 * 1000);
     })
 })
 

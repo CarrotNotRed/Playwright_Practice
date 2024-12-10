@@ -6,6 +6,7 @@ export class BaseItemDetailsComponent {
 
     protected component: Locator;
     protected priceItemSel = '.product-price span';
+    protected quantityNumSel = '.qty-input';
     protected addToCartBtnSel = '[id^="add-to-cart-button"]';
 
     constructor(component: Locator) {
@@ -19,5 +20,10 @@ export class BaseItemDetailsComponent {
 
     public async clickAddToCartBtn() {
         await this.component.locator(this.addToCartBtnSel).click();
+    }
+
+    public async getQuantityNumber(): Promise<number> {
+        const quantityLoc: Locator = this.component.locator(this.quantityNumSel);
+        return Number(await quantityLoc.getAttribute('value'));
     }
 }
