@@ -11,6 +11,7 @@ export class ComputerDetailsPage extends BasePage {
     }
 
     computerComponent<T extends ComputersEssentialComponent>(computerComponentClass: ComputerComponentConstructor<T>): T {
+        // @ts-ignore
         return new computerComponentClass(this.page.locator(computerComponentClass.selectorValue));
     }
 }

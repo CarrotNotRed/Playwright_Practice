@@ -3,6 +3,9 @@ import {ComputerDetailsPage} from "../../models/pages/ComputerDetailsPage";
 import {ComputersEssentialComponent} from "../../models/components/computers/ComputerEssentialComponent";
 import {ComputerDataType} from "../../test_data/computer/ComputerDataType";
 import {LoginFlow} from "../global/LoginFlow";
+import {ShoppingCartPage} from "../../models/pages/ShoppingCartPage";
+import {TotalComponent} from "../../models/components/cart/TotalComponent";
+import {CartItemRowComponent} from "../../models/components/cart/CartItemRowComponent";
 
 export class OrderComputerFlow extends LoginFlow {
     constructor(page: Page, private computerData: ComputerDataType) {
@@ -38,6 +41,16 @@ export class OrderComputerFlow extends LoginFlow {
 
         //Navigate to Shopping Cart page
         await computerDetailsPage.headerComponent().clickOnShoppingCart();
+    }
+
+    async verifyShoppingCart() {
+        const shoppingCart = new ShoppingCartPage(this.page);
+        const cartItemRowComp: CartItemRowComponent[] = await shoppingCart.cartItemRowComponent();
+        const totalComp: TotalComponent = await shoppingCart.totalComponent();
+    }
+
+    async agreeTOSAndCheckout() {
+        throw Error('TBD');
     }
 
     private getAdditionalPrice(optionText: string): number {

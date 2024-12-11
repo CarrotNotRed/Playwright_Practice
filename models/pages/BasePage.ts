@@ -13,6 +13,7 @@ export class BasePage {
     }
 
     headerComponent(): HeaderComponent {
+        // @ts-ignore
         return new HeaderComponent(this.page.locator(HeaderComponent.selectorValue));
     }
 }
