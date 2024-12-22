@@ -8,6 +8,14 @@ standardComputerData.forEach(computerData => {
         const orderComputerFlow: OrderComputerFlow = new OrderComputerFlow(page, computerData);
         await orderComputerFlow.login();
         await orderComputerFlow.buildComputerSpecAndAddToCart();
+        await orderComputerFlow.verifyShoppingCart();
+        await orderComputerFlow.agreeTOSAndCheckout();
+        await orderComputerFlow.inputBillingAddress();
+        await orderComputerFlow.inputShippingAddress();
+        await orderComputerFlow.selectShippingMethod();
+        // await orderComputerFlow.selectPaymentMethod();
+        // await orderComputerFlow.inputPaymentInformation();
+        // await orderComputerFlow.confirmOrder();
         await page.waitForTimeout(5 * 1000);
     })
 })

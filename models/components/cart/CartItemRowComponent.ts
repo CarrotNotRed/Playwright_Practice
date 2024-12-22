@@ -22,7 +22,7 @@ export class CartItemRowComponent {
         return Number(await quantityLoc.getAttribute('value'));
     }
 
-    public async getTotal(): Promise<number> {
+    public async getSubTotal(): Promise<number> {
         const totalLoc = this.component.locator(this.totalSel);
         return Number(await totalLoc.innerText());
     }

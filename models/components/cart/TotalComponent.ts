@@ -22,7 +22,7 @@ export class TotalComponent {
         return await this.component.locator(this.checkoutBtnSel).click();
     }
 
-    public async priceCategories(): Promise<void> {
+    public async priceCategories(): Promise<any> {
         let priceCategories: any = {};
         const priceTableRowLoc = await this.component.locator(this.priceTableRowSel).all();
         for (let tableRow of priceTableRowLoc) {

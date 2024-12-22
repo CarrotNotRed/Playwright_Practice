@@ -11,10 +11,10 @@ export class FooterComponent {
     }
 
     informationColumnComp(): InformationColumnComponent {
-        return new InformationColumnComponent(this.component.locator(InformationColumnComponent.selector));
+        return new InformationColumnComponent(this.component.locator(InformationColumnComponent.selectorValue));
     }
 
     customerServiceColumnComp(): CustomerServiceColumnComponent {
-        return new CustomerServiceColumnComponent(this.component.locator(CustomerServiceColumnComponent.selector));
+        return new CustomerServiceColumnComponent(this.component.locator(CustomerServiceColumnComponent.selectorValue));
     }
 }

@@ -15,3 +15,7 @@ export async function getAdSlot(page: Page, adSlotId: String) {
         return slot.getTargetingMap();
     }, adSlotId);
 }
+
+export async function waitForElementDisappeared(page: Page, loc: string) {
+    return await page.waitForSelector(loc, {state: "hidden"});
+}
