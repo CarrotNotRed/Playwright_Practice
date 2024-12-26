@@ -3,6 +3,8 @@
 *.log
 *.js
 temp/
+/playwright-report/
+/test-results
 tsconfig.json
 test-results
 package-lock.json

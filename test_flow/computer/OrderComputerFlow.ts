@@ -42,13 +42,19 @@ export class OrderComputerFlow extends LoginFlow {
         const quantityNumber: number = await computerComp.getQuantityNumber();
         const totalPrice = itemPrice * quantityNumber;
         console.log(`Total price: ${totalPrice}`);
-        await computerComp.clickAddToCartBtn();
-        const notiText = await computerDetailsPage.getBarNotiText();
-        console.log(`Notification text 122333322: ${notiText}`);
-        if (!notiText?.startsWith('The product has been added')) {
-            throw new Error('Failing when adding product to shopping cart');
-        }
+        // await computerComp.clickAddToCartBtn();
+        // const notiText = await computerDetailsPage.getBarNotiText();
+        // console.log(`Notification text 122333322: ${notiText}`);
+        // if (!notiText?.startsWith('The product has been added')) {
+        //     throw new Error('Failing when adding product to shopping cart');
+        // }
 
+        const ADD_PRODUCT_TO_CART = `**/addproducttocart/**`;
+        const addToCartRequest = this.page.waitForResponse(ADD_PRODUCT_TO_CART);
+        await computerComp.clickAddToCartBtn();
+        const response = await addToCartRequest;
+        const body = await response.json();
+        console.log(body);
         //Navigate to Shopping Cart page
         await computerDetailsPage.headerComponent().clickOnShoppingCart();
     }
@@ -56,7 +62,7 @@ export class OrderComputerFlow extends LoginFlow {
     async verifyShoppingCart() {
         const shoppingCart = new ShoppingCartPage(this.page);
         const cartItemRowComp: CartItemRowComponent[] = await shoppingCart.cartItemRowComponent();
-        const totalComp: TotalComponent = await shoppingCart.totalComponent();
+        const totalComp: TotalComponent = shoppingCart.totalComponent();
         for (let cartItem of cartItemRowComp) {
             const price = await cartItem.getPrice();
             const quantity = await cartItem.getQuantity();

@@ -13,9 +13,9 @@ standardComputerData.forEach(computerData => {
         await orderComputerFlow.inputBillingAddress();
         await orderComputerFlow.inputShippingAddress();
         await orderComputerFlow.selectShippingMethod();
-        // await orderComputerFlow.selectPaymentMethod();
-        // await orderComputerFlow.inputPaymentInformation();
-        // await orderComputerFlow.confirmOrder();
+        await orderComputerFlow.selectPaymentMethod();
+        await orderComputerFlow.inputPaymentInformation();
+        await orderComputerFlow.confirmOrder();
         await page.waitForTimeout(5 * 1000);
     })
 })
